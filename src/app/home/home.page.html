@@ -1,20 +1,35 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+  <ion-toolbar class="ion-toolbar">
+    <ion-title class="ion-title">
+      BuyEasy
     </ion-title>
+    <ion-fab >
+      <ion-fab-button class="button">
+        <ion-icon name="cart"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="produc_Container">
+    <app-card 
+    [imgUrl]="data.imgUrl" 
+    [title]="data.title"
+    [description]="data.description"
+    [price]="data.price"
+    
+
+    ></app-card>
   </div>
+
+  <div id="container" style="display: none;">
+    <strong>Oops! Something Went Wrong</strong>
+    <img src="../../assets/not_found.png" alt="Not found">
+    <p>We couldn't find the product you're looking for, or there might be a connection issue. Please try again later.</p>
+    <ion-button color="tertiary">Refresh</ion-button>
+  </div>
+
+  <app-footer></app-footer>
 </ion-content>
