@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,8 +6,13 @@ import { Component, Input } from '@angular/core';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent {
+export class CardComponent implements OnInit  {
 
   @Input() datas: any;
+  stars: number = 1;
   constructor() { }
+
+  ngOnInit(){
+    this.stars = (Math.floor(this.datas.rating.rate));
+  }
 }

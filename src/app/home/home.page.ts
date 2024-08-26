@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProducsService } from '../api/producs.service';
 import { environment } from 'src/environments/environment.prod';
-import { IProductCatalog } from '../interfaces/IProductCatalog';
+import { Category, IProductCatalog } from '../interfaces/IProductCatalog';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +11,21 @@ import { IProductCatalog } from '../interfaces/IProductCatalog';
 export class HomePage implements OnInit {
  
   public products: IProductCatalog[] = [];
+  public categories!: Category; 
+  url = environment.URL_BASE + 'products';
 
   constructor(private readonly producsService: ProducsService) {}
   async ngOnInit() {
-    const url = environment.URL_BASE + 'products';
-    this.products = await this.producsService.get<IProductCatalog[]>(url);
+    this.products = await this.producsService.get<IProductCatalog[]>(this.url);
+    this.categories = await this.producsService.get<Category>(this.url+'/categories');
   }
 
-  
+  async onOptionSelected(event: any) {
+    if(event.detail.value != 'all'){
+      this.products = await this.producsService.get<IProductCatalog[]>(this.url+'/category/'+event.detail.value);
+    }else{
+      this.ngOnInit();
+    }
+  }
   
 }

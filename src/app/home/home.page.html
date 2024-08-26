@@ -12,15 +12,14 @@
 <ion-content [fullscreen]="true">
     
   <div >
-    <ion-select
+    <ion-select (ionChange)="onOptionSelected($event)"
         label="Choice a category"
         interface="action-sheet"
         placeholder="Select category"
         cancelText="Cancel Choice"
       >
-      <ion-select-option value="apples">Apples</ion-select-option>
-      <ion-select-option value="oranges">Oranges</ion-select-option>
-      <ion-select-option value="bananas">Bananas</ion-select-option>
+      <ion-select-option  *ngFor="let category of categories" value="{{category}}">{{category.toUpperCase()}}</ion-select-option>
+      <ion-select-option value="all">ALL</ion-select-option>
     </ion-select>
     <div class="produc_Container">
      

@@ -2,10 +2,13 @@
   <img src="{{ datas.image }}" />
   <ion-card-header>
     <ion-card-title>{{ datas.title }}</ion-card-title>
-    <ion-card-subtitle>{{ datas.price }}</ion-card-subtitle>
+    <div>
+      <p>{{ datas.price }}</p>
+      <p>{{ datas.rating.rate }}  <ion-icon *ngFor="let star of [].constructor(stars)" name="star"></ion-icon> </p>
+    </div>
   </ion-card-header>
 
   <ion-card-content>
-    {{ datas.description }}
+    {{ datas.category }}
   </ion-card-content>
 </ion-card>
