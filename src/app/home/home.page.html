@@ -1,35 +1,50 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="ion-toolbar">
-    <ion-title class="ion-title">
-      BuyEasy
-    </ion-title>
-    <ion-fab >
-      <ion-fab-button class="button">
-        <ion-icon name="cart"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+  <ion-toolbar>
+    <div  class="div-ion-toolbar">
+      <ion-title class="ion-title">BuyEasy</ion-title>
+        <ion-fab-button [routerLink]="['/form-add']">
+          <ion-icon name="cart"></ion-icon>
+        </ion-fab-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <div class="produc_Container">
-    <app-card 
-    [imgUrl]="data.imgUrl" 
-    [title]="data.title"
-    [description]="data.description"
-    [price]="data.price"
     
-
-    ></app-card>
+  <div >
+    <ion-select
+        label="Choice a category"
+        interface="action-sheet"
+        placeholder="Select category"
+        cancelText="Cancel Choice"
+      >
+      <ion-select-option value="apples">Apples</ion-select-option>
+      <ion-select-option value="oranges">Oranges</ion-select-option>
+      <ion-select-option value="bananas">Bananas</ion-select-option>
+    </ion-select>
+    <div class="produc_Container">
+     
+      <app-card *ngFor="let product of products" [datas]="product"></app-card>
+     
+      
+    </div>
   </div>
+  
 
-  <div id="container" style="display: none;">
-    <strong>Oops! Something Went Wrong</strong>
-    <img src="../../assets/not_found.png" alt="Not found">
-    <p>We couldn't find the product you're looking for, or there might be a connection issue. Please try again later.</p>
-    <ion-button color="tertiary">Refresh</ion-button>
-  </div>
+  <ng-template #noDataTemplate>
+    <div id="container">
+      <app-not-found
+        title="Oops! Something Went Wrong"
+        img="../../assets/not_found.png"
+        description="We couldn't find the product you're looking for, or there might be a connection issue. Please try again later."
+      ></app-not-found>
+    </div>
+  </ng-template>
 
-  <app-footer></app-footer>
 </ion-content>
+
+<ion-footer>
+  <ion-tab-bar slot="bottom">
+    <app-footer size="5"></app-footer>
+  </ion-tab-bar>
+</ion-footer>

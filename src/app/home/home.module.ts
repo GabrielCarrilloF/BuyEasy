@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { FooterComponent } from '../componets/footer/footer.component';
 import { CardComponent } from '../componets/card/card.component';
 import { NotFoundComponent } from '../componets/not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProducsService } from '../api/producs.service';
 
 
 
@@ -16,13 +18,15 @@ import { NotFoundComponent } from '../componets/not-found/not-found.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    HttpClientModule
   ],
   declarations: [
     HomePage,
     FooterComponent,
     CardComponent,
     NotFoundComponent
-  ]
+  ],
+  providers: [ProducsService]
 })
 export class HomePageModule {}
