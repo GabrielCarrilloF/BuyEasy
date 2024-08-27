@@ -1,14 +1,16 @@
-<ion-card>
-  <img src="{{ datas.image }}" />
-  <ion-card-header>
-    <ion-card-title>{{ datas.title }}</ion-card-title>
-    <div>
-      <p>{{ datas.price }}</p>
-      <p>{{ datas.rating.rate }}  <ion-icon *ngFor="let star of [].constructor(stars)" name="star"></ion-icon> </p>
-    </div>
-  </ion-card-header>
-
-  <ion-card-content>
-    {{ datas.category }}
-  </ion-card-content>
-</ion-card>
+<ion-button (click)="click(datas.id)">
+  <ion-card>
+    <img src="{{ datas.image }}" />
+    <ion-card-header>
+      <ion-card-title>{{ datas.title }}</ion-card-title>
+      <div>
+        <p>{{ datas.price }}</p>
+        <p>{{ datas.rating.rate }}  <ion-icon *ngFor="let star of [].constructor(stars)" name="star"></ion-icon> </p>
+      </div>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{ datas.category }}
+    </ion-card-content>
+  </ion-card>
+</ion-button>

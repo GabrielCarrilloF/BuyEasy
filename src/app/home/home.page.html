@@ -23,7 +23,7 @@
     </ion-select>
     <div class="produc_Container">
      
-      <app-card *ngFor="let product of products" [datas]="product"></app-card>
+      <app-card (doClick)="doNavegate($event)" *ngFor="let product of products" [datas]="product"></app-card>
      
       
     </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProducsService } from '../api/producs.service';
 import { environment } from 'src/environments/environment.prod';
 import { Category, IProductCatalog } from '../interfaces/IProductCatalog';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomePage implements OnInit {
   public categories!: Category; 
   url = environment.URL_BASE + 'products';
 
-  constructor(private readonly producsService: ProducsService) {}
+  constructor(private readonly producsService: ProducsService, private readonly navCTR: NavController) {}
   async ngOnInit() {
     this.products = await this.producsService.get<IProductCatalog[]>(this.url);
     this.categories = await this.producsService.get<Category>(this.url+'/categories');
@@ -26,6 +27,11 @@ export class HomePage implements OnInit {
     }else{
       this.ngOnInit();
     }
+  }
+
+  public doNavegate(id: number) {
+    console.log(id);
+    this.navCTR.navigateForward('details/'+id);
   }
   
 }

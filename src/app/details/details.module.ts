@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { DetailsPageRoutingModule } from './details-routing.module';
 
 import { DetailsPage } from './details.page';
+import { HttpClientModule } from '@angular/common/http';
+import { ProducsService } from '../api/producs.service';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailsPageRoutingModule
+    DetailsPageRoutingModule,
+    HttpClientModule
   ],
-  declarations: [DetailsPage]
+  declarations: [DetailsPage],
+  providers: [ProducsService]
 })
 export class DetailsPageModule {}

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 
 @Component({
@@ -9,8 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardComponent implements OnInit  {
 
   @Input() datas: any;
+  @Output() doClick = new EventEmitter();
   stars: number = 1;
   constructor() { }
+
+  click(id: number){
+    this.doClick.emit(id);
+  }
 
   ngOnInit(){
     this.stars = (Math.floor(this.datas.rating.rate));
