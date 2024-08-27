@@ -1,13 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>details</ion-title>
+    <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h1>
+    {{products.title}}
+  </h1>
+
+  <div class="img">
+    <img src="{{products.image}}" alt="image of product">
+  </div>
+
+  <div class="bak">
+    <p class="bak__p">{{products.category}}</p>
+    <p class="bak__pirce">{{products.price}}</p>
+  </div>
+  <div class="description">
+    <h3>Description</h3>
+    <p>{{products.description}}</p>
+  </div>
+  <div class="rating">
+    <p>Bought: </p>
+    <p>3.9*</p>
+  </div>
+
 </ion-content>

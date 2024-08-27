@@ -15,7 +15,9 @@ export class HomePage implements OnInit {
   public categories!: Category; 
   url = environment.URL_BASE + 'products';
 
-  constructor(private readonly producsService: ProducsService, private readonly navCTR: NavController) {}
+  constructor(
+    private readonly producsService: ProducsService,
+    private readonly navCTR: NavController) {}
   async ngOnInit() {
     this.products = await this.producsService.get<IProductCatalog[]>(this.url);
     this.categories = await this.producsService.get<Category>(this.url+'/categories');
