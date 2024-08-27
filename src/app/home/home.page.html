@@ -21,11 +21,10 @@
       <ion-select-option  *ngFor="let category of categories" value="{{category}}">{{category.toUpperCase()}}</ion-select-option>
       <ion-select-option value="all">ALL</ion-select-option>
     </ion-select>
-    <div class="produc_Container">
-     
-      <app-card (doClick)="doNavegate($event)" *ngFor="let product of products" [datas]="product"></app-card>
-     
-      
+    <div *ngIf="products.length > 0; else noDataTemplate" class="produc_Container">
+      @if(products){
+        <app-card (doClick)="doNavegate($event)" *ngFor="let product of products" [datas]="product"></app-card>
+      }
     </div>
   </div>
   
@@ -44,6 +43,6 @@
 
 <ion-footer>
   <ion-tab-bar slot="bottom">
-    <app-footer size="5"></app-footer>
+    <app-footer [size]="size"></app-footer>
   </ion-tab-bar>
 </ion-footer>

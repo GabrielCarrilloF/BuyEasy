@@ -5,25 +5,45 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>
-    {{products.title}}
-  </h1>
+  @if(products){
+    <h1>
+      {{products.title}}
+    </h1>
+  
+    <div class="img">
+      <img src="{{products.image}}" alt="image of product">
+    </div>
+  
+    <div class="bak">
+      <p class="bak__p">{{products.category}}</p>
+      <p class="bak__pirce">{{products.price}}</p>
+    </div>
+    <div class="description">
+      <h3>Description</h3>
+      <p>{{products.description}}</p>
+    </div>
+    <div class="rating">
+      <p>Bought: </p>
+      <p>3.9*</p>
+    </div>
+  }
+  
+  
+  <ion-tabs>
+    <ion-button (click)="addCart()" id="open-toast" expand="block">Add to cart</ion-button>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button [routerLink]="['/home']" tab="home">
+        <ion-icon name="home"></ion-icon>
+        Home
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/cart']" tab="cart">
+        <ion-badge *ngIf="5 > 0;" color="danger">5</ion-badge>
+        <ion-icon name="cart"></ion-icon>
+        Cart
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 
-  <div class="img">
-    <img src="{{products.image}}" alt="image of product">
-  </div>
-
-  <div class="bak">
-    <p class="bak__p">{{products.category}}</p>
-    <p class="bak__pirce">{{products.price}}</p>
-  </div>
-  <div class="description">
-    <h3>Description</h3>
-    <p>{{products.description}}</p>
-  </div>
-  <div class="rating">
-    <p>Bought: </p>
-    <p>3.9*</p>
-  </div>
-
+  
+  <ion-toast trigger="open-toast" message="Added to cart!" [duration]="3000" icon="cart-sharp"></ion-toast>
 </ion-content>
