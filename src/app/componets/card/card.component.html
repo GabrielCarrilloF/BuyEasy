@@ -4,7 +4,7 @@
     <ion-card-header>
       <ion-card-title>{{ datas.title }}</ion-card-title>
       <div>
-        <p>{{ datas.price }}</p>
+        <p>{{ datas.price | currency}}</p>
         <p>{{ datas.rating.rate }}  <ion-icon *ngFor="let star of [].constructor(stars)" name="star"></ion-icon> </p>
       </div>
     </ion-card-header>

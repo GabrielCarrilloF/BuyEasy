@@ -5,15 +5,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
- 
+  <div *ngIf="products.length > 0; else noDataTemplate">
+    <app-item-cart *ngFor="let product of products" [datas]="product"></app-item-cart>
+    <h3 class="total">Total: {{totalPrice | currency}}</h3>
+  </div>
+
+  <ng-template #noDataTemplate>
+    <div id="container">
+      <strong>There are no articles yet</strong>
+      <img src="../../assets/image.png" alt="Not found">
+      <p>Continue shopping to explain</p>
+      <ion-button color="dark" [routerLink]="['/home']">Explore articles</ion-button>
+    </div>
+  </ng-template>
+
   <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button [routerLink]="['/home']" tab="home">
+      <ion-tab-button [routerLink]="['/home']" >
         <ion-icon name="home"></ion-icon>
         Home
       </ion-tab-button>
-      <ion-tab-button [routerLink]="['/cart']" tab="cart">
-        <ion-badge *ngIf="5 > 0;" color="danger">5</ion-badge>
+      <ion-tab-button [routerLink]="['/cart']">
+      
         <ion-icon name="cart"></ion-icon>
         Cart
       </ion-tab-button>

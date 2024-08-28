@@ -16,34 +16,41 @@
   
     <div class="bak">
       <p class="bak__p">{{products.category}}</p>
-      <p class="bak__pirce">{{products.price}}</p>
+      <p class="bak__pirce">{{products.price | currency}}</p>
     </div>
     <div class="description">
       <h3>Description</h3>
       <p>{{products.description}}</p>
     </div>
     <div class="rating">
-      <p>Bought: </p>
-      <p>3.9*</p>
+      <p>Bought: {{products.rating.count}}+</p>
+      <p>{{ products.rating.rate }}  <ion-icon name="star"></ion-icon> </p>
     </div>
+
   }
   
   
+  
   <ion-tabs>
+    <div class="quantity">
+      <ion-button (click)="removeQuantity()"> <ion-icon name="remove"></ion-icon> </ion-button>
+      <h4>{{quantity}}</h4>
+      <ion-button (click)="addQuantity()"> <ion-icon name="add"></ion-icon> </ion-button>
+    </div>
     <ion-button (click)="addCart()" id="open-toast" expand="block">Add to cart</ion-button>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button [routerLink]="['/home']" tab="home">
+      <ion-tab-button [routerLink]="['/home']" >
         <ion-icon name="home"></ion-icon>
         Home
       </ion-tab-button>
-      <ion-tab-button [routerLink]="['/cart']" tab="cart">
-        <ion-badge *ngIf="5 > 0;" color="danger">5</ion-badge>
+      <ion-tab-button [routerLink]="['/cart']">
         <ion-icon name="cart"></ion-icon>
         Cart
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
-
   
   <ion-toast trigger="open-toast" message="Added to cart!" [duration]="3000" icon="cart-sharp"></ion-toast>
 </ion-content>
+
+

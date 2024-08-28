@@ -16,4 +16,11 @@ export class CartService {
   addToCart(item: ICartItem): void {
     this.cart.push(item);
   }
+
+  dropToCart(producByid: number){
+    const index = this.cart.findIndex((item)=>item.id === producByid);
+    if(index !== -1){
+      this.cart.splice(index, 1)
+    }
+  }
 }

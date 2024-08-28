@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
@@ -16,7 +16,8 @@ import { ProducsService } from '../api/producs.service';
     FormsModule,
     IonicModule,
     DetailsPageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CurrencyPipe
   ],
   declarations: [DetailsPage],
   providers: [ProducsService]

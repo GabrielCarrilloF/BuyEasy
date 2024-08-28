@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { CartPageRoutingModule } from './cart-routing.module';
 
 import { CartPage } from './cart.page';
-import { FooterComponent } from '../componets/footer/footer.component';
+import { ItemCartComponent } from '../componets/item-cart/item-cart.component';
+
 
 
 
@@ -16,10 +17,12 @@ import { FooterComponent } from '../componets/footer/footer.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    CartPageRoutingModule
+    CartPageRoutingModule,
+    CurrencyPipe
   ],
   declarations: [
-    CartPage
+    CartPage,
+    ItemCartComponent
   ]
 })
 export class CartPageModule {}

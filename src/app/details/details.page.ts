@@ -14,24 +14,42 @@ import { ICartItem } from '../interfaces/ICartItem';
 export class DetailsPage implements OnInit {
   
   public products!: IProductCatalog;
+  quantity: number = 1;
   constructor(
     private readonly producsService: ProducsService,
     private readonly ActRoutd: ActivatedRoute,
     private CartS: CartService
   ) { }
 
-  addCart(){
-    const newItem: ICartItem = { id: this.products.id, quantity: 5}; 
-    this.CartS.addToCart(newItem);
+  addQuantity(){
+    this.quantity = this.quantity+1;
+  }
 
-    console.log(this.CartS.getCart());
+  removeQuantity(){
+    if(this.quantity > 1){
+      this.quantity = this.quantity-1 ;
+    }
+  }
+
+  addCart(){
+    const newItem: ICartItem = 
+    { 
+      id: this.products.id,
+      quantity: this.quantity,
+      price: this.products.price*this.quantity,
+      title: this.products.title,
+      image: this.products.image,
+      category: this.products.category
+    }; 
+    this.CartS.addToCart(newItem);
   }
   async ngOnInit() {
     this.ActRoutd.params.subscribe(async(ActRoutd) => {
       const url = environment.URL_BASE + 'products/'+ActRoutd['id'];
       this.products = await this.producsService.get<IProductCatalog>(url);
-      console.log(this.products);
     });
   }
+
+  
 
 }

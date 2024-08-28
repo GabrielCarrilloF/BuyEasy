@@ -16,6 +16,7 @@ export class HomePage implements OnInit {
   public categories!: Category; 
   url = environment.URL_BASE + 'products';
   public size!: number;
+  
   constructor(
     private readonly producsService: ProducsService,
     private readonly navCTR: NavController,
@@ -24,11 +25,12 @@ export class HomePage implements OnInit {
   async ngOnInit() {
     this.products = await this.producsService.get<IProductCatalog[]>(this.url);
     this.categories = await this.producsService.get<Category>(this.url+'/categories');
-
-    console.log('Samir es caga');
-    this.size = this.CartS.getCart().length;
+ 
   }
   
+  ionViewWillEnter(){
+    this.size = this.CartS.getCart().length
+  }
 
   async onOptionSelected(event: any) {
     if(event.detail.value != 'all'){
@@ -39,7 +41,6 @@ export class HomePage implements OnInit {
   }
 
   public doNavegate(id: number) {
-    console.log(id);
     this.navCTR.navigateForward('details/'+id);
   }
   

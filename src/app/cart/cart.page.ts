@@ -1,4 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
+import { CartService } from '../services/cart.service';
+import { ICartItem } from '../interfaces/ICartItem';
 
 @Component({
   selector: 'app-cart',
@@ -8,10 +10,18 @@ import { Component, NgModule, OnInit } from '@angular/core';
 
 
 export class CartPage implements OnInit {
+  public products: ICartItem[] = [];
+  public totalPrice!: number;
 
-  constructor() { }
+  constructor(private CartS: CartService) { }
 
   ngOnInit() {
   }
-
+  ionViewWillEnter(){
+    this.products = this.CartS.getCart();
+    this.totalPrice = this.products.reduce((total, product) => {
+      return total + product.price;
+    }, 0);
+  }
+  
 }
