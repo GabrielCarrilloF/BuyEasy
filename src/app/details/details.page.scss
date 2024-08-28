@@ -35,6 +35,14 @@ img {
     gap: 75px;
 }
 
+.cartIcon{
+    position: fixed;
+    bottom: 16px; 
+    right: 16px;
+    z-index: 1000; 
+    margin-bottom: 44px;
+}
+
 .quantity{
     align-items: center;
     display: flex;
@@ -44,6 +52,26 @@ img {
 .quantity h4{
     font-size: 35px;
 }
-.quantity ion-button{
-    font-size: 15px;
+
+.div-ion-toolba{
+    display: flex;
+}
+
+.addcart{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; 
+}
+
+
+.btn {
+    background-color: transparent;
+    color: inherit; 
+    --background: transparent;
+    --background-activated: transparent;
+    --background-focused: transparent;
+    --background-hover: transparent;
+    --ripple-color: transparent;
 }

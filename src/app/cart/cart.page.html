@@ -1,6 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>cart</ion-title>
+    <div  class="div-ion-toolbar">
+      <ion-title class="ion-title">cart</ion-title>
+        <ion-fab-button [routerLink]="['/home']">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-fab-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -8,6 +13,7 @@
   <div *ngIf="products.length > 0; else noDataTemplate">
     <app-item-cart *ngFor="let product of products" [datas]="product"></app-item-cart>
     <h3 class="total">Total: {{totalPrice | currency}}</h3>
+    <ion-button class="pay" expand="block" [routerLink]="['/go-to-pay']">go to pay</ion-button>
   </div>
 
   <ng-template #noDataTemplate>
@@ -15,22 +21,10 @@
       <strong>There are no articles yet</strong>
       <img src="../../assets/image.png" alt="Not found">
       <p>Continue shopping to explain</p>
-      <ion-button color="dark" [routerLink]="['/home']">Explore articles</ion-button>
+      <div>
+        <ion-button color="dark" [routerLink]="['/home']">Explore articles</ion-button>
+      </div>
     </div>
   </ng-template>
-
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button [routerLink]="['/home']" >
-        <ion-icon name="home"></ion-icon>
-        Home
-      </ion-tab-button>
-      <ion-tab-button [routerLink]="['/cart']">
-      
-        <ion-icon name="cart"></ion-icon>
-        Cart
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
 </ion-content>
 

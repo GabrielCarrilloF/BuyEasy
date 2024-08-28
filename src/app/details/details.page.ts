@@ -37,6 +37,7 @@ export class DetailsPage implements OnInit {
       id: this.products.id,
       quantity: this.quantity,
       price: this.products.price*this.quantity,
+      unitiPrice: this.products.price,
       title: this.products.title,
       image: this.products.image,
       category: this.products.category

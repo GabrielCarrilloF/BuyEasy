@@ -1,56 +1,58 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Details</ion-title>
+    <div  class="div-ion-toolbar">
+      <ion-title class="ion-title">BuyEasy</ion-title>
+      <ion-fab-button [routerLink]="['/home']">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-fab-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  @if(products){
-    <h1>
-      {{products.title}}
-    </h1>
-  
-    <div class="img">
-      <img src="{{products.image}}" alt="image of product">
+    <div *ngIf="products; else noDataTemplate">
+      <h1>
+        {{products.title}}
+      </h1>
+    
+      <div class="img">
+        <img src="{{products.image}}" alt="image of product">
+      </div>
+    
+      <div class="bak">
+        <p class="bak__p">{{products.category}}</p>
+        <p class="bak__pirce">{{products.price | currency}}</p>
+      </div>
+      <div class="description">
+        <h3>Description</h3>
+        <p>{{products.description}}</p>
+      </div>
+      <div class="rating">
+        <p>Bought: {{products.rating.count}}+</p>
+        <p>{{ products.rating.rate }}  <ion-icon name="star"></ion-icon> </p>
+      </div>
+      <div class="quantity">
+        <ion-button class="btn" (click)="removeQuantity()"> <ion-icon name="remove"></ion-icon> </ion-button>
+        <h4>{{quantity}}</h4>
+        <ion-button class="btn" (click)="addQuantity()"> <ion-icon name="add"></ion-icon> </ion-button>
+      </div>
+      
+      <ion-button class="addcart" (click)="addCart()" id="open-toast" expand="block">Add to cart</ion-button>
+      <ion-toast trigger="open-toast" message="Added to cart!" [duration]="3000" icon="cart-sharp"></ion-toast>
     </div>
   
-    <div class="bak">
-      <p class="bak__p">{{products.category}}</p>
-      <p class="bak__pirce">{{products.price | currency}}</p>
-    </div>
-    <div class="description">
-      <h3>Description</h3>
-      <p>{{products.description}}</p>
-    </div>
-    <div class="rating">
-      <p>Bought: {{products.rating.count}}+</p>
-      <p>{{ products.rating.rate }}  <ion-icon name="star"></ion-icon> </p>
-    </div>
-
-  }
-  
-  
-  
-  <ion-tabs>
-    <div class="quantity">
-      <ion-button (click)="removeQuantity()"> <ion-icon name="remove"></ion-icon> </ion-button>
-      <h4>{{quantity}}</h4>
-      <ion-button (click)="addQuantity()"> <ion-icon name="add"></ion-icon> </ion-button>
-    </div>
-    <ion-button (click)="addCart()" id="open-toast" expand="block">Add to cart</ion-button>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button [routerLink]="['/home']" >
-        <ion-icon name="home"></ion-icon>
-        Home
-      </ion-tab-button>
-      <ion-tab-button [routerLink]="['/cart']">
+    <ng-template #noDataTemplate>
+      <div id="container">
+        <strong>There are no articles yet</strong>
+        <img src="../../assets/image.png" alt="Not found">
+        <p>Continue shopping to explain</p>
+        <ion-button color="dark" [routerLink]="['/home']">Explore articles</ion-button>
+      </div>
+    </ng-template>
+    
+      <ion-fab-button class="cartIcon" [routerLink]="['/cart']">
         <ion-icon name="cart"></ion-icon>
-        Cart
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
-  
-  <ion-toast trigger="open-toast" message="Added to cart!" [duration]="3000" icon="cart-sharp"></ion-toast>
+      </ion-fab-button>
 </ion-content>
 
 

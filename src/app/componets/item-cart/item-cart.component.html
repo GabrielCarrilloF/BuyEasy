@@ -1,13 +1,12 @@
-<ion-list>
+
   <ion-item>
     <ion-avatar aria-hidden="true" slot="start">
       <img alt="" src="{{datas.image}}" />
     </ion-avatar>
     <ion-label>{{datas.title}}</ion-label>
     <p>{{datas.price | currency}}</p>
+    <ion-icon (click)="dilite(datas.id)" name="trash"></ion-icon>
   </ion-item>
   <div>
     <small>quantity: {{datas.quantity}} </small>
   </div>
-</ion-list>
-<ion-button (click)="dilite(datas.id)">j</ion-button>

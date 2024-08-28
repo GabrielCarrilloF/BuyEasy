@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>goToPay</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Invoice Summary</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <br><br>
+  <p>Below is the summary of your purchase, including the details of each item, the quantity selected, and the total amount due. Please review the information carefully before proceeding to payment.</p>
+  <br><br>
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-title>Invoice Details</ion-title>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>{{ product.id }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.unitiPrice | currency }}  _</td>
+                <td>{{ product.price | currency }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4">Grand Total</td>
+                <td>{{ totalPrice | currency }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <br><br>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button class="pay" color="dark" expand="block" [routerLink]="['/cart']">Cancel</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button class="pay" expand="block" (click)="pay()" >Pay</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>  
+  
+</ion-content>
